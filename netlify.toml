@@ -1,0 +1,5 @@
+# Netlify settings for ozintelpro.com
+# The site is plain HTML (no build step). The chat runs as a small server function.
+[build]
+  publish = "."
+  functions = "netlify/functions"

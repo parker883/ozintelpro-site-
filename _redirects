@@ -1,0 +1,13 @@
+# Where each marketplace button goes.
+# Today every one shows the "opening soon" page.
+# When Ravi gives you the secure TaxCentive links, replace the address on each line
+# and change "200" to "302!", for example:
+#   /portal/investor  https://taxcentiveneo.ozintelpro.com/...  302!
+/launch                    /launch-soon.html  200
+/portal/investor           /launch-soon.html  200
+/portal/fund-manager       /launch-soon.html  200
+/portal/property-manager   /launch-soon.html  200
+/advisors.html             /                  301
+/assistant                 /                  302
+/netlify/*                 /404.html          404!
+/netlify.toml              /404.html          404!
