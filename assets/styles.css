@@ -263,3 +263,12 @@ a.card .more{font-weight:700;font-size:15px;margin-top:auto;padding-top:6px;colo
 .insight .btns{margin-top:8px}
 .insight-note{font-size:13px;color:var(--muted);margin:0}
 @media (max-width:640px){.insight{padding:24px}.latest{padding:18px 20px}.takeaways{grid-template-columns:1fr}}
+.more-wrap{max-width:860px;display:flex;flex-direction:column;gap:18px;margin-top:16px}
+.more-h{font-size:28px}
+.more-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.more-item{border:1px solid var(--line);border-radius:12px;background:var(--card);padding:24px;display:flex;flex-direction:column;gap:10px;transition:border-color .15s,background .15s}
+.more-item:hover{border-color:var(--gold);background:var(--card-hi)}
+.more-item h3{font-size:21px;line-height:1.25}
+.more-item p{margin:0;font-size:15px;color:var(--body)}
+.more-go{margin-top:auto;font-weight:700;font-size:14px;color:var(--gold)}
+.insight-note a{color:var(--gold);text-decoration:underline}
