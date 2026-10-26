@@ -276,3 +276,7 @@ a.card .more{font-weight:700;font-size:15px;margin-top:auto;padding-top:6px;colo
 .insight .btns{align-items:center}
 .ask-link{font-weight:700;font-size:15px;color:var(--gold);padding:8px 4px}
 .ask-link:hover{color:var(--gold-hi);text-decoration:underline}
+
+.bio-link{display:inline-block;margin-top:12px;font-weight:700;font-size:15px;color:var(--gold)}
+.bio-link:hover{color:var(--gold-hi);text-decoration:underline}
+#blake,#news{scroll-margin-top:96px}
