@@ -280,3 +280,14 @@ a.card .more{font-weight:700;font-size:15px;margin-top:auto;padding-top:6px;colo
 .bio-link{display:inline-block;margin-top:12px;font-weight:700;font-size:15px;color:var(--gold)}
 .bio-link:hover{color:var(--gold-hi);text-decoration:underline}
 #blake,#news{scroll-margin-top:96px}
+
+/* OZ market facts */
+.market{margin-top:24px;background:var(--navy,#14213D);border-radius:12px;padding:28px 32px;color:#F5F0E3}
+.market-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 16px;margin-bottom:20px}
+.market-head p{margin:0;color:#C9CFDA;font-size:15px}
+.market-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:24px}
+.market-grid div{display:flex;flex-direction:column;gap:6px}
+.market-grid b{font-family:var(--display);font-size:40px;font-weight:600;color:var(--gold);line-height:1;font-variant-numeric:tabular-nums}
+.market-grid span{font-size:15px;line-height:1.45;color:#DCE1EA}
+.market-src{display:block;margin-top:20px;font-size:12px;line-height:1.5;color:#9AA3B5}
+@media (max-width:600px){.market{padding:24px 20px}.market-grid{grid-template-columns:1fr 1fr;gap:20px 16px}.market-grid b{font-size:30px}.market-grid span{font-size:14px}}
