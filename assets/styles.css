@@ -291,3 +291,17 @@ a.card .more{font-weight:700;font-size:15px;margin-top:auto;padding-top:6px;colo
 .market-grid span{font-size:15px;line-height:1.45;color:#DCE1EA}
 .market-src{display:block;margin-top:20px;font-size:12px;line-height:1.5;color:#9AA3B5}
 @media (max-width:600px){.market{padding:24px 20px}.market-grid{grid-template-columns:1fr 1fr;gap:20px 16px}.market-grid b{font-size:30px}.market-grid span{font-size:14px}}
+
+/* Contact chooser */
+.contact-dlg{border:none;border-radius:14px;padding:28px 28px 22px;width:min(420px,calc(100vw - 32px));background:#fff;color:var(--navy);box-shadow:0 20px 60px rgba(11,19,36,.35)}
+.contact-dlg::backdrop{background:rgba(11,19,36,.55)}
+.contact-dlg h3{font-family:var(--display);font-weight:600;font-size:22px;margin:6px 0 16px}
+.contact-x{position:absolute;top:10px;right:12px;border:none;background:none;font-size:26px;line-height:1;color:#5A6475;cursor:pointer;padding:4px 8px}
+.contact-addr{display:flex;align-items:center;justify-content:space-between;gap:12px;background:#F5F0E3;border:1px solid #E4DCC7;border-radius:10px;padding:10px 12px;margin-bottom:16px;font-weight:600;word-break:break-all}
+.contact-copy{border:1px solid var(--navy);background:#fff;color:var(--navy);border-radius:8px;padding:6px 12px;font:inherit;font-size:13px;cursor:pointer;flex-shrink:0}
+.contact-btns{display:flex;flex-direction:column;gap:10px}
+.contact-btns .btn{width:100%;justify-content:center;text-align:center}
+.contact-dlg small{display:block;margin-top:14px;color:#5A6475;font-size:12.5px}
+.contact-dlg h3{color:#14213D}
+.contact-dlg .btn-outline{color:#14213D;border:1px solid #14213D;background:#fff}
+.contact-dlg .btn-outline:hover{background:#F5F0E3;color:#14213D}
