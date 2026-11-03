@@ -305,3 +305,29 @@ a.card .more{font-weight:700;font-size:15px;margin-top:auto;padding-top:6px;colo
 .contact-dlg h3{color:#14213D}
 .contact-dlg .btn-outline{color:#14213D;border:1px solid #14213D;background:#fff}
 .contact-dlg .btn-outline:hover{background:#F5F0E3;color:#14213D}
+
+/* News & Insights: jump links, feed, homepage strip */
+.nav > a{white-space:nowrap}
+.jump{position:sticky;top:76px;z-index:20;background:rgba(11,19,36,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.jump-row{display:flex;gap:8px;overflow-x:auto;padding-block:12px;scrollbar-width:none}
+.jump-row::-webkit-scrollbar{display:none}
+.jump a{flex-shrink:0;padding:8px 14px;border:1px solid var(--line);border-radius:999px;font-size:14px;font-weight:600;color:#D5DBE6;white-space:nowrap}
+.jump a:hover{border-color:var(--gold);color:var(--ink)}
+#oz2-status,#industry-news,#team,#podcasts,#news,#blake{scroll-margin-top:150px}
+.section-note{margin:-6px 0 18px;color:var(--body);font-size:15px}
+.team-block{display:flex;flex-direction:column;gap:28px}
+.more-h.big{font-size:32px;margin:0}
+#team-feed:empty{display:none}
+.pill{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(201,162,39,.45);border-radius:999px;padding:2px 8px}
+.home-news-wrap{margin-top:24px}
+.home-news-head{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px 16px;margin-bottom:14px}
+.home-news{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.home-news-card h3{font-size:18px;line-height:1.3}
+.home-news-card p{font-size:14.5px}
+.home-news-card.feature{border-color:rgba(201,162,39,.55);box-shadow:inset 4px 0 0 var(--gold)}
+.menu-panel nav a.m-top{border-bottom:1px solid var(--line)}
+/* Header fit with the extra News & Insights link */
+.dd-btn,.nav>a,.header-ctas .btn{white-space:nowrap}
+.nav{gap:2px}
+@media (max-width:1380px){.nav>a,.dd-btn{padding:0 9px;font-size:14.5px}.header-ctas .btn{padding:10px 14px}.header-row{gap:14px}}
+@media (max-width:1240px){.nav,.header-ctas{display:none}.menu{display:block}}
