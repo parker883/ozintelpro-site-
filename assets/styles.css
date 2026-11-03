@@ -335,3 +335,34 @@ a.card .more{font-weight:700;font-size:15px;margin-top:auto;padding-top:6px;colo
 .news-more{margin-top:18px}
 #news-feed .more-item[hidden]{display:none}
 .news-more{display:inline-flex;width:auto;align-self:flex-start}
+
+/* Mobile menu (redesigned) */
+.menu .i-close{display:none}
+.menu[open] .i-open{display:none}
+.menu[open] .i-close{display:block}
+
+.menu-panel{max-height:calc(100dvh - 77px);overflow-y:auto;overscroll-behavior:contain}
+.menu-panel nav{padding:6px max(20px,env(safe-area-inset-left)) 24px}
+.menu-panel nav a.m-link,.m-acc>summary{display:flex;align-items:center;justify-content:space-between;min-height:56px;padding:0 4px;border-bottom:1px solid var(--line);font-size:17px;font-weight:600;color:var(--ink);background:none;box-shadow:none;list-style:none;cursor:pointer}
+.m-acc>summary::-webkit-details-marker{display:none}
+.m-acc>summary .chev{transition:transform .15s;color:#9AA3B5}
+.m-acc[open]>summary .chev{transform:rotate(180deg)}
+.menu-panel nav a.m-link[aria-current="page"],.m-acc.active>summary{color:var(--gold);background:none}
+.m-sub{display:flex;flex-direction:column;padding:4px 0 10px 14px;border-bottom:1px solid var(--line);border-left:2px solid rgba(201,162,39,.35);margin-left:4px}
+.menu-panel nav .m-sub a{min-height:46px;display:flex;align-items:center;padding:0 10px;border:0;font-size:15.5px;font-weight:500;color:#C9CFDA;border-radius:8px;background:none}
+.menu-panel nav .m-sub a[aria-current="page"]{color:var(--gold);background:rgba(243,245,249,.05)}
+.menu-panel nav .m-sub a.portal{color:var(--gold);font-weight:600}
+.menu-panel nav .m-sub a.portal::after{content:" →"}
+.m-ctas{padding-top:20px;gap:10px}
+.m-ctas .btn{flex:1 1 140px;justify-content:center}
+body.menu-open .oz-launch{display:none}
+@media (prefers-reduced-motion:reduce){.m-acc>summary .chev{transition:none}}
+/* scope fixes: inner accordion summaries must not inherit the hamburger button style */
+.menu .m-acc>summary{width:auto;height:auto;min-height:56px;border:0;border-bottom:1px solid var(--line);border-radius:0;justify-content:space-between;padding:0 4px}
+.menu[open] .m-acc>summary{border-color:var(--line)}
+.menu[open]>summary{border-color:var(--gold)}
+.m-acc[open]>summary{border-bottom-color:transparent}
+.menu-panel nav .m-ctas .btn-primary{color:var(--navy)}
+.menu-panel nav .m-ctas .btn{border-bottom:0}
+.menu-panel nav .m-ctas .btn-primary{border:0}
+.menu-panel nav .m-ctas .btn-outline{border:1.5px solid var(--line);color:var(--ink)}
