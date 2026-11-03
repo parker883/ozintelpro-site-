@@ -38,6 +38,10 @@ const decode = (s) =>
     .replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, "$1")
     .replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g, '"').replace(/&#39;|&apos;/g, "'")
     .replace(/&#(\d+);/g, (_, n) => String.fromCharCode(+n))
+    .replace(/&#x([0-9a-f]+);/gi, (_, n) => String.fromCharCode(parseInt(n, 16)))
+    .replace(/&(nbsp|ensp|emsp|thinsp);/g, " ")
+    .replace(/&(rsquo|lsquo);/g, "'").replace(/&(rdquo|ldquo);/g, '"')
+    .replace(/&(mdash|ndash);/g, "-").replace(/&hellip;/g, "...")
     .replace(/&amp;/g, "&");
 const plain = (s) => decode(s).replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
 const clip = (s, n = 220) => (s.length > n ? s.slice(0, n).replace(/\s+\S*$/, "") + "…" : s);
@@ -68,6 +72,12 @@ function headlines(h, channel) {
   for (const m of h.matchAll(/<h[1-4][^>]*>([\s\S]*?)<\/h[1-4]>/gi)) {
     const t = textOf(m[1]);
     if (t && t.length > 8 && !(channel && t.toLowerCase().includes(channel.toLowerCase())) && !/^dear\b/i.test(t)) out.push(t);
+  }
+  if (!out.length) {
+    for (const m of h.matchAll(/<(strong|b)[^>]*>([\s\S]*?)<\/\1>/gi)) {
+      const t = textOf(m[2]);
+      if (t.length >= 20 && t.length <= 140 && !(channel && t.toLowerCase().includes(channel.toLowerCase())) && !/^dear\b/i.test(t)) out.push(t);
+    }
   }
   return out;
 }
@@ -106,8 +116,18 @@ function parseFeed(xml, nameOverride) {
     };
   })
   // "ICYMI" re-sends repeat an earlier issue, so drop them when that issue is already listed.
-  .filter((it, _, all) => !(it.resend && all.some((o) => !o.resend && o.title === it.title)))
-  .map(({ resend, ...it }) => it);
+  .map((it) => ({ ...it, generic: !!channelTitle && it.title.toLowerCase() === channelTitle.toLowerCase() }))
+  // The same issue can appear twice (an original plus an "ICMYI" re-send). Keep one copy,
+  // preferring the copy that has a real headline, then the original send.
+  .filter((it, i, all) => {
+    const key = (x) => x.summary.slice(0, 120).toLowerCase();
+    const twin = all.findIndex((o) => o !== it && key(o) && key(o) === key(it));
+    if (twin < 0) return true;
+    const o = all[twin];
+    const score = (x) => (x.generic ? 0 : 2) + (x.resend ? 0 : 1);
+    return score(it) > score(o) || (score(it) === score(o) && i < twin);
+  })
+  .map(({ resend, generic, ...it }) => it);
 }
 
 // ---------- Google Sheet (CSV) ----------

@@ -331,3 +331,7 @@ a.card .more{font-weight:700;font-size:15px;margin-top:auto;padding-top:6px;colo
 .nav{gap:2px}
 @media (max-width:1380px){.nav>a,.dd-btn{padding:0 9px;font-size:14.5px}.header-ctas .btn{padding:10px 14px}.header-row{gap:14px}}
 @media (max-width:1240px){.nav,.header-ctas{display:none}.menu{display:block}}
+
+.news-more{margin-top:18px}
+#news-feed .more-item[hidden]{display:none}
+.news-more{display:inline-flex;width:auto;align-self:flex-start}
