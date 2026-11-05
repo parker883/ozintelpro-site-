@@ -104,12 +104,20 @@ function parseFeed(xml, nameOverride) {
     // Generic issue titles ("The Opportunity Zone Outlook") are swapped for the issue's lead headline.
     const generic = !rawTitle || /^(icymi|icmyi|in case you missed it)\b/i.test(rawTitle) ||
       (channelTitle && rawTitle.toLowerCase().replace(/^(icymi|icmyi|fwd?):\s*/i, "").trim() === channelTitle.toLowerCase());
+    const summaryText = intro(body);
+    let title = generic && heads[0] ? heads[0] : rawTitle;
+    // No headline found and the title is just the newsletter name: use the issue's opening
+    // sentence instead, so each issue gets its own title (and isn't merged with the others).
+    if (!title || (channelTitle && title.toLowerCase().replace(/^(icymi|icmyi|fwd?):\s*/i, "").trim() === channelTitle.toLowerCase())) {
+      const first = (summaryText.match(/^.{25,140}?[.!?](?=\s|$)/) || [""])[0];
+      title = first || clip(summaryText, 90) || title;
+    }
     return {
-      title: generic && heads[0] ? heads[0] : rawTitle,
+      title,
       link,
       date: toDate(plain(tag(b, "pubDate") || tag(b, "published") || tag(b, "updated") || tag(b, "dc:date"))),
       source,
-      summary: clip(intro(body)),
+      summary: clip(summaryText),
       type: "",
       section: "industry",
       resend: /^(icymi|icmyi|in case you missed it)\b/i.test(rawTitle),
